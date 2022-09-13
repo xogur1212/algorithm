@@ -17,18 +17,13 @@ class Solution {
         }
         for(int count =0;count <= size-1; count ++){
 
-             if(!reverseMap.get(tSplit[count]).equals(sSplit[count])){
+             if(!reverseMap.get(tSplit[count]).equals(sSplit[count]) || !isIsomorphicMap.get(sSplit[count]).equals(tSplit[count])){
 
                     return false;
                 }
             
 
-                    if(!isIsomorphicMap.get(sSplit[count]).equals(tSplit[count])){
-
-                        return false;
-                    }
-                
-
+         
         }
 
 
