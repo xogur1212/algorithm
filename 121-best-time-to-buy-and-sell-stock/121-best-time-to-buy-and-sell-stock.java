@@ -12,7 +12,7 @@ class Solution {
             
             if(maxReturn<price-min){
                 maxReturn=price-min;
-                System.out.println(maxReturn);
+
             }
             
         }
