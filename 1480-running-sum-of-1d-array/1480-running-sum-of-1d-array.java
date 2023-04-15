@@ -1,23 +1,15 @@
 class Solution {
     public int[] runningSum(int[] nums) {
         
+        int [] sumArray = new int[nums.length];
+        int sumResult =0;
         
-        List<Integer> intArray =new ArrayList();
-        int size = nums.length;
-        int sum = 0;
-        int count =0;
-        int [] array = new int[size]; 
-        for(int num : nums){
-            intArray.add(num);
+        for(int i =0 ; i<nums.length; i++){
+           
+           sumResult += nums[i];
+           sumArray[i]= sumResult;
         }
-        for(int a : intArray){
-            System.out.println(a);
-            
-            sum += a;
-            array[count]=sum;
-            count++;
-        }
-        
-        return array;
+
+        return sumArray;
     }
 }
