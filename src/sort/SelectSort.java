@@ -1,4 +1,4 @@
-package selectsort;
+package sort;
 
 /**
  * 최대나 최소 데이터를 데이터가 나열된 순으로 찾아 가며 선택하는 방법
