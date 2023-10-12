@@ -36,5 +36,83 @@ package day1;
  * 32와 45를 비교하는 방식으로 진행됨됨
 *
 */
-ublic class MergedSort {
+public class MergedSort {
+
+    public static void main(String[] args) {
+
+        int[] array = {24,32,42,60,5,15,45,90};
+         mergeSort(array,0, array.length -1);
+
+    }
+
+
+    private static void mergeSort(int[] array, int left, int right) {
+
+        //더이상 쪼갤수 없다면
+        if(left == right) return;
+
+        int mid = (left + right) / 2;	// 절반 위치
+
+        mergeSort(array, left, mid);		// 절반 중 왼쪽 부분리스트(left ~ mid)
+        mergeSort(array, mid + 1, right);	// 절반 중 오른쪽 부분리스트(mid+1 ~ right)
+
+        merge(array, left, mid, right);		// 병합작업
+
+    }
+
+    private static void merge(int [] array, int left, int mid ,int right){
+
+        int leftPoint = left;
+        int rightPoint = mid +1;
+        int index = left;
+        int [] sortedArray =new int[array.length];
+
+        while (leftPoint <= mid && rightPoint <= right) {
+
+            //왼쪽 부분리스트에 1번째 원소가 오른쪽 부분 리스트 r 번쨰 원소보다 작거나 같을 경우
+            //왼쪽부터 1번째 원소를 새 배열에 넣고 leftValue 와 idx 1 증가
+            if(array[leftPoint] <= array[rightPoint]){
+
+                sortedArray[index] = array[leftPoint];
+                index++;
+                leftPoint++;
+            }
+            // 오른쪽 부분리스트 rightPoint 번째 원소가 왼쪽 부분리스트 1번째 원소보다 작건 ㅏ같을경우
+            // 오른쪽에 rightPoint 번째 원소에 새배열 넣고 r , idx 증가
+
+            else{
+                sortedArray[index] = array[rightPoint];
+                index++;
+                rightPoint++;
+            }
+
+
+        }
+
+        // 왼쪽 다 찾는데 오른쪽 아직 덜찼으면
+
+        if(leftPoint > mid) {
+            while(rightPoint <= right) {
+                sortedArray[index] = array[rightPoint];
+                index++;
+                rightPoint++;
+            }
+        }
+
+        //오른쪽 먼저 다 찼으면
+
+        else{
+            while(leftPoint <= mid) {
+                sortedArray[index] = array[leftPoint];
+                index++;
+                leftPoint++;
+            }
+        }
+
+        // 다시 기존 배열 복사
+
+        for(int i = left ; i<= right ; i++){
+            array[i] = sortedArray[i];
+        }
+    }
 }
